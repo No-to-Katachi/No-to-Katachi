@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://no-to-katachi.github.io/No-to-Katachi/sitemap.xml
