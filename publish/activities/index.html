@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>活動記録 — 野と形 / Field Notebook</title>
+  <meta name="description" content="野と形の活動記録。対話のたびに、一冊のノートが開かれる。その見開きに残った走り書きの記録。">
+
+  <link rel="canonical" href="https://no-to-katachi.github.io/No-to-Katachi/activities/">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="野と形 / No to Katachi">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://no-to-katachi.github.io/No-to-Katachi/activities/">
+  <meta property="og:site_name" content="野と形">
+  <meta property="og:title" content="活動記録 — 野と形 / Field Notebook">
+  <meta property="og:description" content="対話のたびに、一冊のノートが開かれる。その見開きに残った走り書きの記録。">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:image" content="https://no-to-katachi.github.io/No-to-Katachi/ogp.png">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="活動記録 — 野と形 / Field Notebook">
+  <meta name="twitter:description" content="対話のたびに、一冊のノートが開かれる。その見開きに残った走り書きの記録。">
+  <meta name="twitter:image" content="https://no-to-katachi.github.io/No-to-Katachi/ogp.png">
+
+  <link rel="stylesheet" href="shared.css">
+  <style>
+    /* ── C: Field Notebook — editorial spreads ── */
+    body { background: var(--nk-paper-warmer); }
+    .ntk-nav { background: rgba(239, 236, 229, 0.9); }
+
+    .notebook {
+      max-width: 1180px; margin: 0 auto;
+      padding: 3rem 2rem 2rem;
+    }
+
+    .spread {
+      background: var(--nk-paper);
+      margin-bottom: 5rem;
+      padding: 5rem 4.5rem 4rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      position: relative;
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 3rem;
+    }
+
+    /* Center seam suggestion */
+    .spread::after {
+      content: ''; position: absolute;
+      top: 2rem; bottom: 2rem;
+      left: calc(160px + 3rem - 1.5rem);
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent 0%,
+        var(--nk-line-2) 10%,
+        var(--nk-line-2) 90%,
+        transparent 100%);
+    }
+
+    .spread-date-col { position: sticky; top: 7rem; align-self: start; }
+
+    .spread-chapter {
+      font-family: var(--nk-serif);
+      font-size: 0.75rem;
+      letter-spacing: 0.3em;
+      color: var(--nk-fg-7);
+      margin-bottom: 0.5rem;
+    }
+    .spread-num {
+      font-family: var(--nk-serif);
+      font-weight: 200;
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--nk-ink);
+      letter-spacing: -0.02em;
+    }
+    .spread-date-full {
+      margin-top: 1.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--nk-fg-4);
+      line-height: 1.8;
+    }
+    .spread-date-ja {
+      margin-top: 0.4rem;
+      font-family: var(--nk-serif);
+      font-size: 0.9rem;
+      color: var(--nk-fg-3);
+      letter-spacing: 0.08em;
+    }
+    .spread-divider {
+      margin: 2rem 0;
+      width: 40px; height: 1px;
+      background: var(--nk-line-3);
+    }
+    .spread-duration {
+      font-family: var(--nk-serif);
+      font-size: 0.85rem;
+      color: var(--nk-fg-4);
+      letter-spacing: 0.06em;
+    }
+    .spread-duration em {
+      font-style: normal; font-weight: 400; color: var(--nk-ink);
+    }
+
+    .spread-body {}
+
+    .spread-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--nk-earth);
+      margin-bottom: 1.25rem;
+      display: inline-flex; align-items: center; gap: 0.75rem;
+    }
+    .spread-eyebrow::before {
+      content: ''; width: 24px; height: 1px; background: var(--nk-earth);
+    }
+
+    .spread-title {
+      font-family: var(--nk-serif);
+      font-weight: 300;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      letter-spacing: 0.05em;
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+    .spread-title-en {
+      font-family: var(--nk-sans);
+      font-size: 0.75rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--nk-fg-7);
+      margin-bottom: 2.5rem;
+    }
+
+    .spread-lead {
+      font-family: var(--nk-serif);
+      font-weight: 300;
+      font-size: 1.1rem;
+      line-height: 2.2;
+      color: var(--nk-fg-3);
+      margin-bottom: 3rem;
+      max-width: 62ch;
+    }
+    .spread-lead::first-letter {
+      font-family: var(--nk-serif);
+      font-size: 3.4rem;
+      font-weight: 300;
+      float: left;
+      line-height: 0.9;
+      padding: 0.45rem 0.5rem 0 0;
+      color: var(--nk-ink);
+    }
+
+    .notes-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 3rem;
+      row-gap: 0;
+    }
+
+    .note {
+      padding: 2rem 0;
+      border-top: 1px solid var(--nk-line-2);
+      position: relative;
+    }
+    .note:nth-child(odd) { padding-right: 1.5rem; }
+    .note:nth-child(even) { padding-left: 1.5rem; border-left: 1px solid var(--nk-line-2); }
+
+    .note-num {
+      font-family: var(--nk-serif);
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: var(--nk-fg-7);
+      margin-bottom: 0.75rem;
+    }
+    .note-cat {
+      font-size: 0.62rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--nk-fg-6);
+      margin-bottom: 0.75rem;
+    }
+    .note-title {
+      font-family: var(--nk-serif);
+      font-weight: 400;
+      font-size: 1.1rem;
+      letter-spacing: 0.04em;
+      line-height: 1.55;
+      margin-bottom: 0.3rem;
+    }
+    .note-title-en {
+      font-family: var(--nk-sans);
+      font-size: 0.66rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--nk-fg-7);
+      margin-bottom: 1rem;
+    }
+    .note-summary {
+      font-size: 0.88rem;
+      line-height: 2;
+      color: var(--nk-fg-3);
+    }
+    .note-quote {
+      margin-top: 1rem;
+      padding: 0.75rem 0 0.75rem 1rem;
+      border-left: 2px solid var(--nk-earth);
+      font-family: var(--nk-serif);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      color: var(--nk-earth);
+    }
+
+    .page-footer-note {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--nk-line-1);
+      display: flex; justify-content: space-between; align-items: baseline;
+      font-size: 0.65rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--nk-fg-6);
+    }
+    .page-footer-note .folio {
+      font-family: var(--nk-serif);
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
+      color: var(--nk-fg-4);
+    }
+
+    /* Colophon */
+    .colophon {
+      max-width: 680px; margin: 0 auto;
+      padding: 6rem 2rem 2rem;
+      text-align: center;
+    }
+    .colophon-mark {
+      font-family: var(--nk-serif);
+      font-size: 1.2rem; font-weight: 300;
+      letter-spacing: 0.4em;
+      color: var(--nk-fg-7);
+      margin-bottom: 1.5rem;
+    }
+    .colophon-text {
+      font-family: var(--nk-serif);
+      font-weight: 300;
+      font-size: 1rem;
+      line-height: 2.2;
+      color: var(--nk-fg-4);
+    }
+
+    @media (max-width: 900px) {
+      .spread {
+        grid-template-columns: 1fr;
+        padding: 3rem 2rem 2.5rem;
+        gap: 2rem;
+      }
+      .spread::after { display: none; }
+      .spread-date-col { position: static; }
+      .spread-num { font-size: 3.5rem; }
+      .notes-list { grid-template-columns: 1fr; }
+      .note:nth-child(even) { padding-left: 0; border-left: none; }
+      .note:nth-child(odd) { padding-right: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="ntk-nav">
+    <a href="../" class="logo" style="text-decoration:none;color:inherit;">野と形</a>
+    <ul class="nav-links">
+      <li><a href="../#process">Process</a></li>
+      <li><a href="./" class="current">Activities</a></li>
+      <li><a href="../#about">About</a></li>
+      <li><a href="../#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <header class="page-header">
+    <p class="page-eyebrow">Field Notebook · 2026</p>
+    <h1 class="page-title">フィールド・ノート</h1>
+    <p class="page-subtitle-en">Sessions I — III · Spring 2026</p>
+    <p class="page-lead">
+      対話のたびに、<br>
+      一冊のノートが開かれる。<br>
+      その見開きに残った走り書きの記録。
+    </p>
+  </header>
+
+  <div class="filter-bar">
+    <div class="filter-bar-inner" id="filter-bar-inner"></div>
+  </div>
+
+  <main class="notebook" id="notebook"></main>
+
+  <section class="colophon">
+    <div class="colophon-mark">— 奥付 —</div>
+    <p class="colophon-text">
+      野と形 Field Notebook, Vol. I<br>
+      2026年春・浜松と東京のあいだで<br>
+      村上 陸人 / 松井 日向子
+    </p>
+  </section>
+
+  <footer class="ntk-footer">
+    <p>&copy; 2026 野と形 / No to Katachi</p>
+  </footer>
+
+  <script src="entries.js"></script>
+  <script>
+    // Filter chips
+    const filterHost = document.getElementById('filter-bar-inner');
+    NTK_CATEGORIES.forEach((c, i) => {
+      const b = document.createElement('button');
+      b.className = 'filter-chip' + (i === 0 ? ' active' : '');
+      b.dataset.cat = c.id;
+      b.innerHTML = `<span class="chip-ja">${c.label}</span><span class="chip-en">${c.en}</span>`;
+      b.addEventListener('click', () => {
+        document.querySelectorAll('.filter-chip').forEach(el => el.classList.remove('active'));
+        b.classList.add('active');
+        applyFilter(c.id);
+      });
+      filterHost.appendChild(b);
+    });
+
+    const monthNames = { '01': 'January', '02': 'February', '03': 'March', '04': 'April' };
+    const romanNums = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+
+    // Group by session date
+    const host = document.getElementById('notebook');
+    const byDate = {};
+    NTK_ENTRIES.forEach(e => (byDate[e.date] = byDate[e.date] || []).push(e));
+    const dates = Object.keys(byDate).sort();
+
+    dates.forEach((date, idx) => {
+      const entries = byDate[date];
+      const session = entries.find(e => e.category === 'session') || entries[0];
+      const notes = entries.filter(e => e !== session);
+      const [y, m, d] = date.split('-');
+
+      const spread = document.createElement('article');
+      spread.className = 'spread fade-in';
+      spread.dataset.sessionCat = 'session';
+
+      const notesHtml = notes.map((n, i) => `
+        <div class="note" data-cat="${n.category}">
+          <div class="note-num">No. ${String(i + 1).padStart(2, '0')}</div>
+          <div class="note-cat">${n.categoryLabel} / ${n.categoryEn}</div>
+          <h3 class="note-title">${n.title}</h3>
+          <p class="note-title-en">${n.titleEn}</p>
+          <p class="note-summary">${n.summary}</p>
+          ${n.quote ? `<p class="note-quote">「${n.quote}」</p>` : ''}
+        </div>
+      `).join('');
+
+      spread.innerHTML = `
+        <aside class="spread-date-col">
+          <div class="spread-chapter">Chapter ${romanNums[idx]}</div>
+          <div class="spread-num">${String(idx + 1).padStart(2, '0')}</div>
+          <p class="spread-date-full">${monthNames[m]} ${parseInt(d)}<br>${y}</p>
+          <p class="spread-date-ja">${y}年${parseInt(m)}月${parseInt(d)}日</p>
+          <div class="spread-divider"></div>
+          ${session.duration ? `<p class="spread-duration"><em>${session.duration}</em> の対話</p>` : `<p class="spread-duration">村上 · 松井</p>`}
+        </aside>
+        <div class="spread-body">
+          <p class="spread-eyebrow">Session ${romanNums[idx]} · ${session.categoryEn}</p>
+          <h2 class="spread-title">${session.title}</h2>
+          <p class="spread-title-en">${session.titleEn}</p>
+          <p class="spread-lead">${session.summary}</p>
+          <div class="notes-list">
+            ${notesHtml}
+          </div>
+          <div class="page-footer-note">
+            <span>野と形 · Field Notebook</span>
+            <span class="folio">— ${String(idx + 1).padStart(2, '0')} —</span>
+            <span>${monthNames[m]} ${y}</span>
+          </div>
+        </div>
+      `;
+      host.appendChild(spread);
+    });
+
+    // Filter: hides notes within spreads; hides spread if session itself filtered out
+    function applyFilter(cat) {
+      document.querySelectorAll('.note').forEach(el => {
+        const match = cat === 'all' || el.dataset.cat === cat;
+        el.classList.toggle('hidden-by-filter', !match);
+      });
+      // if filtering to a non-session category, hide the session lead too? keep lead visible for context
+      document.querySelectorAll('.spread').forEach(s => {
+        if (cat === 'all' || cat === 'session') { s.style.display = ''; return; }
+        const visible = s.querySelectorAll('.note:not(.hidden-by-filter)').length;
+        s.style.display = visible ? '' : 'none';
+      });
+    }
+
+    // Fade-in
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) en.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+  </script>
+</body>
+</html>
